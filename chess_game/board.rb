@@ -31,6 +31,12 @@ class Board
         self[start_pos] = nil
     end
 
+    def valid_pos?(pos)
+        valid_range = (0..7).to_a
+
+        valid_range.include?(pos[0]) && valid_range.include?(pos[1])
+    end
+
     private
 
     def setup 
