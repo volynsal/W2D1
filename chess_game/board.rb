@@ -7,15 +7,7 @@ class Board
     def initialize
         @rows = Array.new(8) { Array.new(8) } 
         #@sentinel = NullPiece.new
-
-        (0...@rows.length).each do |idx1|
-            (0...@rows.length).each do |idx2|
-                if [0,1,6,7].include?(idx1)
-                    new_piece = Piece.new    
-                    @rows[idx1][idx2] = new_piece
-                end
-            end
-        end
+        setup
     end
 
     def [](pos)
@@ -37,6 +29,19 @@ class Board
         #debugger
         self[end_pos] = self[start_pos]
         self[start_pos] = nil
+    end
+
+    private
+
+    def setup 
+        (0...@rows.length).each do |idx1|
+            (0...@rows.length).each do |idx2|
+                if [0,1,6,7].include?(idx1)
+                    new_piece = Piece.new    
+                    @rows[idx1][idx2] = new_piece
+                end
+            end
+        end
     end
 end
 
